@@ -1,5 +1,5 @@
 import re
-import StringConvertor as sc
+from StringConvertor import StringConvertor
 import NenkaikiCalculator as nc
 from CustomError import WarekiError
 
@@ -18,6 +18,7 @@ if __name__ == '__main__':
                 raise WarekiError()
 
             in_year = re.sub(r'\D','',in_year)
+            sc = StringConvertor()
             in_year = sc.toHankaku(str(in_year))
 
             out_year = int(in_year)
