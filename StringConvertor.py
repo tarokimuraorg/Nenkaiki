@@ -1,15 +1,18 @@
-def toHankaku(zenkaku : str) -> str:
+class StringConvertor:
 
-    zenkaku_data = [0xff01 + i for i in range(94)]
-    hankaku_data = [0x21 + i for i in range(94)]
-    data = {zenkaku_data[i]:hankaku_data[i] for i in range(94)}
+    def __init__(self):
 
-    return zenkaku.translate(data)
+        self.__zenkaku_data = [0xff01 + i for i in range(94)]
+        self.__hankaku_data = [0x21 + i for i in range(94)]        
 
-def toZenkaku(hankaku : str) -> str:
+    def toHankaku(self, zenkaku : str) -> str:
 
-    zenkaku_data = [0xff01 + i for i in range(94)]
-    hankaku_data = [0x21 + i for i in range(94)]
-    data = {hankaku_data[i]:zenkaku_data[i] for i in range(94)}
+        data = {self.__zenkaku_data[i]:self.__hankaku_data[i] for i in range(94)}
 
-    return hankaku.translate(data)
+        return zenkaku.translate(data)
+
+    def toZenkaku(self, hankaku : str) -> str:
+
+        data = {self.__hankaku_data[i]:self.__zenkaku_data[i] for i in range(94)}
+
+        return hankaku.translate(data)
